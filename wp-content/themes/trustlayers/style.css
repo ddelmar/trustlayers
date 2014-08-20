@@ -1,0 +1,2039 @@
+/*
+Theme Name: Trustlayers
+Theme URI: http://www.vivwebsolutions.com
+Description: Custom theme developed for TrustLayers
+Author: ViV Web Solutions
+Author URI: http://www.vivwebsolutions.com
+Version: 1.0.0
+*/
+@charset "UTF-8";
+/* =============================================================================
+Default variables
+========================================================================== */
+/* =============================================================================
+Typography
+========================================================================== */
+/* =============================================================================
+Responsive
+========================================================================== */
+/* =============================================================================
+Font sizes
+========================================================================== */
+/* =============================================================================
+Quotes
+========================================================================== */
+/* =============================================================================
+Brand
+========================================================================== */
+/* =============================================================================
+Objects and absractions
+========================================================================== */
+/* =============================================================================
+Framework
+========================================================================== */
+/* =============================================================================
+Generic utility styles etc.
+========================================================================== */
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+/**
+ * Create a fully formed type style (sizing and vertical rhythm) by passing in a
+ * single value, e.g.:
+ *
+   `@include font-size(10px);`
+ *
+ * Thanks to @redclov3r for the `line-height` Sass:
+ * twitter.com/redclov3r/status/250301539321798657
+ */
+/**
+ * Style any number of headings in one fell swoop, e.g.:
+ *
+   .foo{
+       @include headings(1, 3){
+           color:#BADA55;
+       }
+    }
+ *
+ * With thanks to @lar_zzz, @paranoida, @rowanmanning and ultimately
+ * @thierrylemoulec for refining and improving my initial mixin.
+ */
+/**
+ * Create vendor-prefixed CSS in one go, e.g.
+ *
+   `@include vendor(border-radius, 4px);`
+ *
+ */
+/**
+ * Create CSS keyframe animations for all vendors in one go, e.g.:
+ *
+   .foo{
+       @include vendor(animation, shrink 3s);
+   }
+
+   @include keyframe(shrink){
+       from{
+           font-size:5em;
+       }
+   }
+ *
+ * Courtesy of @integralist: twitter.com/integralist/status/260484115315437569
+ */
+/**
+ * Force overly long spans of text to truncate, e.g.:
+ *
+   `@include truncate(100%);`
+ *
+ * Where `$truncation-boundary` is a united measurement.
+ */
+/**
+ * CSS arrows!!! But... before you read on, you might want to grab a coffee...
+ *
+ * This mixin creates a CSS arrow on a given element. We can have the arrow
+ * appear in one of 12 locations, thus:
+ *
+ *       01    02    03
+ *    +------------------+
+ * 12 |                  | 04
+ *    |                  |
+ * 11 |                  | 05
+ *    |                  |
+ * 10 |                  | 06
+ *    +------------------+
+ *       09    08    07
+ *
+ * You pass this position in along with a desired arrow color and optional
+ * border color, for example:
+ *
+ * `@include arrow(top, left, red)`
+ *
+ * for just a single, red arrow, or:
+ *
+ * `@include arrow(bottom, center, red, black)`
+ *
+ * which will create a red triangle with a black border which sits at the bottom
+ * center of the element. Call the mixin thus:
+ *
+   .foo{
+       background-color:#BADA55;
+       border:1px solid #ACE;
+       @include arrow(top, left, #BADA55, #ACE);
+   }
+ *
+ */
+/**
+ * Media query mixin.
+ *
+ * It’s not great practice to define solid breakpoints up-front, preferring to
+ * modify your design when it needs it, rather than assuming you’ll want a
+ * change at ‘mobile’. However, as inuit.css is required to take a hands off
+ * approach to design decisions, this is the closest we can get to baked-in
+ * responsiveness. It’s flexible enough to allow you to set your own breakpoints
+ * but solid enough to be frameworkified.
+ *
+ * We define some broad breakpoints in our vars file that are picked up here
+ * for use in a simple media query mixin. Our options are:
+ *
+ * palm
+ * lap
+ * lap-and-up
+ * portable
+ * desk
+ * desk-wide
+ *
+ * Not using a media query will, naturally, serve styles to all devices.
+ *
+ * `@include media-query(palm){ [styles here] }`
+ *
+ * We work out your end points for you:
+ */
+/* normalize.css v2.1.3 | MIT License | git.io/normalize */
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined in IE 8/9.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+audio,
+canvas,
+video {
+  display: inline-block;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9.
+ * Hide the `template` element in IE, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background: transparent;
+}
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+a:focus {
+  outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+pre {
+  white-space: pre-wrap;
+}
+
+/**
+ * Set consistent quote types.
+ */
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9.
+ */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+figure {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+button,
+input {
+  line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+textarea {
+  overflow: auto;
+  /* 1 */
+  vertical-align: top;
+  /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+/**
+ * A more considered reset; more of a restart...
+ * As per: csswizardry.com/2011/10/reset-restarted
+ */
+/**
+* Let’s make the box model all nice, shall we...?
+*/
+*, *:before, *:after {
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/**
+ * The usual...
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+dl, dd, ol, ul,
+form, fieldset, legend,
+table, th, td, caption,
+hr {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Give a help cursor to elements that give extra info on `:hover`.
+ */
+abbr[title], dfn[title] {
+  cursor: help;
+}
+
+/**
+ * Remove underlines from potentially troublesome elements.
+ */
+u, ins {
+  text-decoration: none;
+}
+
+/**
+ * Apply faux underline via `border-bottom`.
+ */
+ins {
+  border-bottom: 1px solid;
+}
+
+/**
+ * 1. So that `alt` text is visually offset if images don’t load.
+ * 2. Remove the gap between images and the bottom of their containers
+ */
+img {
+  font-style: italic;
+  /* [1] */
+  vertical-align: middle;
+  /* [2] */
+}
+
+/**
+ * Give form elements some cursor interactions...
+ */
+label,
+button {
+  cursor: pointer;
+}
+
+/**
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+  resize: vertical;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  padding: 0;
+}
+
+/*------------------------------------*\
+    $CLEARFIX
+\*------------------------------------*/
+/**
+ * Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+ * Extend the clearfix class with Sass to avoid the `.cf` class appearing over
+ * and over in your markup.
+ */
+.cf:after, .nav:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*------------------------------------*\
+    $SHARED
+\*------------------------------------*/
+/**
+ * Where `margin-bottom` is concerned, this value will be the same as the
+ * base line-height. This allows us to keep a consistent vertical rhythm.
+ * As per: csswizardry.com/2012/06/single-direction-margin-declarations
+ */
+/**
+ * Base elements
+ */
+h1, h2, h3, h4, h5, h6, hgroup,
+ul, ol, dl,
+blockquote, p, address,
+table,
+fieldset, figure,
+pre, hr,
+.form-fields > li,
+.media,
+.island,
+.islet {
+  margin-bottom: 21px;
+  margin-bottom: 1.3125rem;
+}
+.islet h1, .islet h2, .islet h3, .islet h4, .islet h5, .islet h6, .islet hgroup, .islet
+ul, .islet ol, .islet dl, .islet
+blockquote, .islet p, .islet address, .islet
+table, .islet
+fieldset, .islet figure, .islet
+pre, .islet hr, .islet .form-fields > li, .islet
+.media, .islet
+.island, .islet
+.islet {
+  margin-bottom: 10.5px;
+  margin-bottom: 0.65625rem;
+}
+
+/**
+ * Doubled up `margin-bottom` helper class.
+ */
+.landmark {
+  margin-bottom: 42px;
+  margin-bottom: 2.625rem;
+}
+
+/**
+ * Where `margin-left` is concerned we want to try and indent certain elements
+ * by a consistent amount. Define that amount once, here.
+ */
+ul, ol, dd {
+  margin-left: 42px;
+  margin-left: 2.625rem;
+}
+
+/* =============================================================================
+Base styles; unclassed HTML elements etc.
+========================================================================== */
+/*------------------------------------*\
+    $MAIN
+\*------------------------------------*/
+html {
+  font: 1em/1.3125 "Mission Gothic", sans-serif;
+  overflow-y: scroll;
+  min-height: 100%;
+  color: white;
+}
+
+body {
+  padding-top: 84px;
+  background: #303030;
+}
+
+a {
+  color: #26b3df;
+}
+
+/*------------------------------------*\
+    $HEADINGS
+\*------------------------------------*/
+/**
+ * As per: csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css
+ *
+ * When we define a heading we also define a corresponding class to go with it.
+ * This allows us to apply, say, `class=alpha` to a `h3`; a double-stranded
+ * heading hierarchy.
+ */
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+  font-family: 'Melbourne', sans-serif;
+  font-weight: 300;
+}
+
+h1, .alpha {
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 1.3125;
+}
+
+h2, .beta {
+  font-size: 28px;
+  font-size: 1.75rem;
+}
+
+h3, .gamma {
+  font-size: 24px;
+  font-size: 1.5rem;
+}
+
+h4, .delta {
+  font-size: 22px;
+  font-size: 1.375rem;
+}
+
+h5, .epsilon {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+h6, .zeta {
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+/**
+ * A series of classes for setting massive type; for use in heroes, mastheads,
+ * promos, etc.
+ */
+.giga {
+  font-size: 96px;
+  font-size: 6rem;
+  line-height: 1.09375;
+}
+
+.mega {
+  font-size: 75px;
+  font-size: 4.6875rem;
+  line-height: 1.12;
+}
+
+.kilo {
+  font-size: 48px;
+  font-size: 3rem;
+  line-height: 1.3125;
+}
+
+/*------------------------------------*\
+    $PARAGRAPHS
+\*------------------------------------*/
+/**
+ * The `.lede` class is used to make the introductory text (usually a paragraph)
+ * of a document slightly larger.
+ */
+.lede,
+.lead {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.16667;
+}
+
+/*------------------------------------*\
+    $SMALLPRINT
+\*------------------------------------*/
+/**
+ * A series of classes for setting tiny type; for use in smallprint etc.
+ */
+.smallprint,
+.milli {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.micro {
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 1.75;
+}
+
+/*------------------------------------*\
+    $IMAGES
+\*------------------------------------*/
+/**
+ * Demo: jsfiddle.net/inuitcss/yMtur
+ */
+/**
+ * Fluid images.
+ */
+img {
+  width: auto\9;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+ * Image placement variations.
+ */
+.img--right, .alignright {
+  float: right;
+  margin-bottom: 21px;
+  margin-left: 21px;
+}
+
+.img--left, .alignleft {
+  float: left;
+  margin-right: 21px;
+  margin-bottom: 21px;
+}
+
+.img--center, .aligncenter {
+  display: block;
+  margin-right: auto;
+  margin-bottom: 21px;
+  margin-left: auto;
+}
+
+/**
+ * Images in `figure` elements.
+ */
+figure > img {
+  display: block;
+}
+
+/*------------------------------------*\
+    $LISTS
+\*------------------------------------*/
+/**
+ * Remove vertical spacing from nested lists.
+ */
+li > ul,
+li > ol {
+  margin-bottom: 0;
+}
+
+/**
+ * Have a numbered `ul` without the semantics implied by using an `ol`.
+ */
+/*ul*/
+.numbered-list {
+  list-style-type: decimal;
+}
+
+/*------------------------------------*\
+    $FORMS
+\*------------------------------------*/
+/**
+ *
+ * Demo: jsfiddle.net/inuitcss/MhHHU
+ *
+ */
+fieldset {
+  padding: 21px;
+}
+
+/**
+ * Group sets of form fields in a list, e.g.:
+ *
+   <ul class=form-fields>
+       <li>
+           <label />
+           <input />
+       </li>
+       <li>
+           <label />
+           <select />
+       </li>
+       <li>
+           <label />
+           <input />
+       </li>
+   </ul>
+ *
+ */
+.form-fields {
+  list-style: none;
+  margin: 0;
+}
+
+.form-fields > li:last-child {
+  margin-bottom: 0;
+}
+
+/* =============================================================================
+Objects and abstractions
+========================================================================== */
+/*------------------------------------*\
+    $NAV
+\*------------------------------------*/
+/**
+ * Nav abstraction as per: csswizardry.com/2011/09/the-nav-abstraction
+ * When used on an `ol` or `ul`, this class throws the list into horizontal mode
+ * e.g.:
+ *
+   <ul class=nav>
+       <li><a href=#>Home</a></li>
+       <li><a href=#>About</a></li>
+       <li><a href=#>Portfolio</a></li>
+       <li><a href=#>Contact</a></li>
+   </ul>
+ *
+ * Demo: jsfiddle.net/inuitcss/Vnph4
+ *
+ */
+.nav {
+  list-style: none;
+  margin-left: 0;
+}
+.nav > li,
+.nav > li > a {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+
+/**
+ * `.nav--stacked` extends `.nav` and throws the list into vertical mode, e.g.:
+ *
+   <ul class="nav  nav--stacked">
+       <li><a href=#>Home</a></li>
+       <li><a href=#>About</a></li>
+       <li><a href=#>Portfolio</a></li>
+       <li><a href=#>Contact</a></li>
+   </ul>
+ *
+ */
+.nav--stacked > li {
+  display: list-item;
+}
+.nav--stacked > li > a {
+  display: block;
+}
+
+/**
+ * `.nav--banner` extends `.nav` and centres the list, e.g.:
+ *
+   <ul class="nav  nav--banner">
+       <li><a href=#>Home</a></li>
+       <li><a href=#>About</a></li>
+       <li><a href=#>Portfolio</a></li>
+       <li><a href=#>Contact</a></li>
+   </ul>
+ *
+ */
+.nav--banner {
+  text-align: center;
+}
+
+/**
+ * Give nav links a big, blocky hit area. Extends `.nav`, e.g.:
+ *
+   <ul class="nav  nav--block">
+       <li><a href=#>Home</a></li>
+       <li><a href=#>About</a></li>
+       <li><a href=#>Portfolio</a></li>
+       <li><a href=#>Contact</a></li>
+   </ul>
+ *
+ */
+.nav--block {
+  line-height: 1;
+  /**
+   * Remove whitespace caused by `inline-block`.
+   */
+  letter-spacing: -0.31em;
+  word-spacing: -0.43em;
+  white-space: nowrap;
+}
+.nav--block > li {
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+.nav--block > li > a {
+  padding: 10.5px;
+}
+
+/**
+ * Force a nav to occupy 100% of the available width of its parent. Extends
+ * `.nav`, e.g.:
+ *
+   <ul class="nav  nav--fit">
+       <li><a href=#>Home</a></li>
+       <li><a href=#>About</a></li>
+       <li><a href=#>Portfolio</a></li>
+       <li><a href=#>Contact</a></li>
+   </ul>
+ *
+ * Thanks to @pimpl for this idea!
+ */
+.nav--fit {
+  display: table;
+  width: 100%;
+}
+.nav--fit > li {
+  display: table-cell;
+}
+.nav--fit > li > a {
+  display: block;
+}
+
+/**
+ * Make a list of keywords. Extends `.nav`, e.g.:
+ *
+   `<ul class="nav  nav--keywords>`
+ *
+ */
+.nav--keywords > li:after {
+  content: "\002C" "\00A0";
+}
+.nav--keywords > li:last-child:after {
+  display: none;
+}
+
+/* =============================================================================
+Style trumps; helper and brand classes
+========================================================================== */
+/*------------------------------------*\
+    $PUSH
+\*------------------------------------*/
+/**
+ * Push classes, to move grid items over to the right by certain amounts.
+ */
+/*------------------------------------*\
+    $PULL
+\*------------------------------------*/
+/**
+ * Pull classes, to move grid items over to the right by certain amounts.
+ */
+/*------------------------------------*\
+    $BRAND
+\*------------------------------------*/
+/**
+ * `.brand` is a quick and simple way to apply your brand face and/or color to
+ * any element using a handy helper class.
+ */
+.brand {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+  color: #26b3df!important;
+}
+
+.brand-face {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+}
+
+.brand-color,
+.brand-colour {
+  color: #26b3df!important;
+}
+
+/*------------------------------------*\
+    $HELPER
+\*------------------------------------*/
+/**
+ * A series of helper classes to use arbitrarily. Only use a helper class if an
+ * element/component doesn’t already have a class to which you could apply this
+ * styling, e.g. if you need to float `.main-nav` left then add `float:left;` to
+ * that ruleset as opposed to adding the `.float--left` class to the markup.
+ *
+ * A lot of these classes carry `!important` as you will always want them to win
+ * out over other selectors.
+ */
+/**
+ * Add/remove floats
+ */
+.float--right {
+  float: right !important;
+}
+
+.float--left {
+  float: left !important;
+}
+
+.float--none {
+  float: none !important;
+}
+
+/**
+ * Text alignment
+ */
+.text--left {
+  text-align: left  !important;
+}
+
+.text--center {
+  text-align: center !important;
+}
+
+.text--right {
+  text-align: right !important;
+}
+
+/**
+ * Font weights
+ */
+.weight--light {
+  font-weight: 300 !important;
+}
+
+.weight--normal {
+  font-weight: 400 !important;
+}
+
+.weight--semibold {
+  font-weight: 600 !important;
+}
+
+/**
+ * Add/remove margins
+ */
+.push {
+  margin: 21px !important;
+}
+
+.push--top {
+  margin-top: 21px !important;
+}
+
+.push--right {
+  margin-right: 21px !important;
+}
+
+.push--bottom {
+  margin-bottom: 21px !important;
+}
+
+.push--left {
+  margin-left: 21px !important;
+}
+
+.push--ends {
+  margin-top: 21px !important;
+  margin-bottom: 21px !important;
+}
+
+.push--sides {
+  margin-right: 21px !important;
+  margin-left: 21px !important;
+}
+
+.push-half {
+  margin: 10.5px !important;
+}
+
+.push-half--top {
+  margin-top: 10.5px !important;
+}
+
+.push-half--right {
+  margin-right: 10.5px !important;
+}
+
+.push-half--bottom {
+  margin-bottom: 10.5px !important;
+}
+
+.push-half--left {
+  margin-left: 10.5px !important;
+}
+
+.push-half--ends {
+  margin-top: 10.5px !important;
+  margin-bottom: 10.5px !important;
+}
+
+.push-half--sides {
+  margin-right: 10.5px !important;
+  margin-left: 10.5px !important;
+}
+
+.flush {
+  margin: 0 !important;
+}
+
+.flush--top {
+  margin-top: 0 !important;
+}
+
+.flush--right {
+  margin-right: 0 !important;
+}
+
+.flush--bottom {
+  margin-bottom: 0 !important;
+}
+
+.flush--left {
+  margin-left: 0 !important;
+}
+
+.flush--ends {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.flush--sides {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+/**
+ * Add/remove paddings
+ */
+.soft {
+  padding: 21px !important;
+}
+
+.soft--top {
+  padding-top: 21px !important;
+}
+
+.soft--right {
+  padding-right: 21px !important;
+}
+
+.soft--bottom {
+  padding-bottom: 21px !important;
+}
+
+.soft--left {
+  padding-left: 21px !important;
+}
+
+.soft--ends {
+  padding-top: 21px !important;
+  padding-bottom: 21px !important;
+}
+
+.soft--sides {
+  padding-right: 21px !important;
+  padding-left: 21px !important;
+}
+
+.soft-half {
+  padding: 10.5px !important;
+}
+
+.soft-half--top {
+  padding-top: 10.5px !important;
+}
+
+.soft-half--right {
+  padding-right: 10.5px !important;
+}
+
+.soft-half--bottom {
+  padding-bottom: 10.5px !important;
+}
+
+.soft-half--left {
+  padding-left: 10.5px !important;
+}
+
+.soft-half--ends {
+  padding-top: 10.5px !important;
+  padding-bottom: 10.5px !important;
+}
+
+.soft-half--sides {
+  padding-right: 10.5px !important;
+  padding-left: 10.5px !important;
+}
+
+.hard {
+  padding: 0 !important;
+}
+
+.hard--top {
+  padding-top: 0 !important;
+}
+
+.hard--right {
+  padding-right: 0 !important;
+}
+
+.hard--bottom {
+  padding-bottom: 0 !important;
+}
+
+.hard--left {
+  padding-left: 0 !important;
+}
+
+.hard--ends {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.hard--sides {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+/**
+ * Pull items full width of `.island` parents.
+ */
+.full-bleed {
+  margin-right: -21px !important;
+  margin-left: -21px !important;
+}
+.islet .full-bleed {
+  margin-right: -10.5px !important;
+  margin-left: -10.5px !important;
+}
+
+/**
+ * Apply capital case to an element (usually a `strong`).
+ */
+.caps {
+  text-transform: uppercase !important;
+}
+
+/**
+ * Hide content off-screen without resorting to `display:none;`, also provide
+ * breakpoint specific hidden elements.
+ */
+.accessibility,
+.visuallyhidden {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+
+/**
+ * Image replacement.
+ */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+}
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+
+/* endif */
+/* =============================================================================
+Photoshop helper mixins
+========================================================================== */
+/* =============================================================================
+Grid
+========================================================================== */
+/* =============================================================================
+Custom WP CSS Styles
+========================================================================== */
+.wp-caption {
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.wp-caption img {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.wp-caption .wp-caption-text {
+  padding: 3px;
+  margin: 0;
+  font-size: 85%;
+  font-style: italic;
+}
+
+/* ===== Primary Styles ========================================================
+Author: Javier Villanueva
+========================================================================== */
+/* =============================================================================
+Fonts
+========================================================================== */
+@font-face {
+  font-family: 'Melbourne';
+  src: url('fonts/melbourne_light-webfont.eot?1407561780');
+  src: url('fonts/melbourne_light-webfont.eot?&1407561780#iefix') format("embedded-opentype"), url('fonts/melbourne_light-webfont.woff?1407561780') format("woff"), url('fonts/melbourne_light-webfont.ttf?1407561780') format("truetype"), url('fonts/melbourne_light-webfont.svg?1407561780#melbournelight') format("svg");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Mission Gothic';
+  src: url('fonts/mission_gothic_regular-webfont.eot?1407562376');
+  src: url('fonts/mission_gothic_regular-webfont.eot?&1407562376#iefix') format("embedded-opentype"), url('fonts/mission_gothic_regular-webfont.woff?1407562376') format("woff"), url('fonts/mission_gothic_regular-webfont.ttf?1407562376') format("truetype"), url('fonts/mission_gothic_regular-webfont.svg?1407562376#mission_gothicregular') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Mission Gothic';
+  src: url('fonts/mission_gothic_light-webfont.eot?1407562376');
+  src: url('fonts/mission_gothic_light-webfont.eot?&1407562376#iefix') format("embedded-opentype"), url('fonts/mission_gothic_light-webfont.woff?1407562376') format("woff"), url('fonts/mission_gothic_light-webfont.ttf?1407562376') format("truetype"), url('fonts/mission_gothic_light-webfont.svg?1407562376#mission_gothiclight') format("svg");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Mission Gothic';
+  src: url('fonts/mission_gothic_bold-webfont.eot?1407572346');
+  src: url('fonts/mission_gothic_bold-webfont.eot?&1407572346#iefix') format("embedded-opentype"), url('fonts/mission_gothic_bold-webfont.woff?1407572346') format("woff"), url('fonts/mission_gothic_bold-webfont.ttf?1407572346') format("truetype"), url('fonts/mission_gothic_bold-webfont.svg?1407572346#mission_gothicbold') format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+/* =============================================================================
+Icons
+========================================================================== */
+.icon {
+  background: url('img/icons-s17057a6d55.png');
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon-down-arrow-big {
+  background-position: 0 0;
+  height: 47px;
+  width: 46px;
+}
+
+.icon-right-arrow-big {
+  background-position: 0 -47px;
+  height: 27px;
+  width: 26px;
+}
+
+.icon-right-arrow-small {
+  background-position: 0 -74px;
+  height: 17px;
+  width: 18px;
+}
+
+/* =============================================================================
+Container
+========================================================================== */
+.container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* =============================================================================
+Header
+========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 84px;
+  padding: 20px;
+  background: #fff;
+  z-index: 20;
+}
+
+.site-logo {
+  float: left;
+}
+
+.main-menu-container {
+  float: right;
+  margin: 12px 0;
+}
+
+.main-menu > li {
+  margin-left: 15px;
+}
+.main-menu > li.is-active a {
+  border-color: #26b3df;
+}
+.main-menu a {
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.menu-toggle {
+	display: none;
+}
+
+/* =============================================================================
+Home Intro
+========================================================================== */
+.home-intro-container {
+  position: relative;
+  z-index: 10;
+}
+.home-intro-container:after {
+  content: '';
+  display: block;
+  padding-top: 60.166%;
+}
+
+.home-intro {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  background: url('img/bg-intro.jpg?1407684473') no-repeat fixed;
+  background-size: cover;
+}
+
+.home-intro-content {
+  position: absolute;
+  right: -2px;
+  bottom: 0;
+  width: 78.57143%;
+  float: left;
+}
+
+.home-intro-title {
+  width: 54.54545%;
+  float: left;
+}
+
+.home-intro-body {
+  clear: both;
+  display: table;
+}
+
+.home-intro-text {
+  display: table-cell;
+  width: 72.72727%;
+  padding: 3.57143% 7.14286%;
+  vertical-align: middle;
+  background: #26b3df;
+}
+
+.home-intro-link {
+  display: table-cell;
+  width: 27.27273%;
+  text-align: center;
+  vertical-align: middle;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* =============================================================================
+Home Middle
+========================================================================== */
+.home-middle-container {
+  position: relative;
+  z-index: 10;
+}
+.home-middle-container:after {
+  content: '';
+  display: block;
+  padding-top: 53.5%;
+}
+
+.home-middle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 15.71429% 0;
+  font-size: 1.6vw;
+  overflow: hidden;
+  background: #191919;
+  background-size: cover;
+}
+
+.home-middle-content {
+  width: 57.14286%;
+  margin: 0 auto;
+}
+
+/* =============================================================================
+Home Blog
+========================================================================== */
+.home-blog {
+  display: table;
+  width: 100%;
+}
+.home-blog a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.home-blog-main {
+  display: table-cell;
+  width: 71.42857%;
+  padding: 14.28571%;
+  vertical-align: middle;
+  background: #26b3df;
+}
+
+.home-blog-articles {
+  display: table-cell;
+  width: 28.57143%;
+  padding: 14.28571% 7.14286%;
+  vertical-align: middle;
+  background: #303030;
+}
+
+.home-articles-list > li {
+  margin-bottom: 1em;
+}
+
+.home-articles-link {
+  float: right;
+}
+
+/* =============================================================================
+Home Team
+========================================================================== */
+.home-team-container {
+  background: #191919;
+}
+
+.home-team {
+  width: 71.42857%;
+  padding: 7.14286% 0 4.7619%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.home-team-member {
+  display: inline-block;
+  width: 50%;
+  max-width: 340px;
+  margin: 0 3.57143% 3.57143%;
+  text-align: left;
+}
+
+.home-team-name {
+  font-family: "Mission Gothic", sans-serif;
+  font-weight: bold;
+}
+
+/* =============================================================================
+Home Contact
+========================================================================== */
+.home-contact-container {
+  background: #303030;
+}
+
+.home-contact {
+  width: 71.42857%;
+  padding: 7.14286% 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.home-contact-input {
+  width: 100%;
+  height: 54px;
+  padding: 15px;
+  color: #fff;
+  border: 2px solid #fff;
+  background: none;
+  vertical-align: top;
+}
+.home-contact-input::-webkit-input-placeholder {
+  color: #fff;
+}
+.home-contact-input:-moz-placeholder {
+  color: #fff;
+}
+.home-contact-input::-moz-placeholder {
+  color: #fff;
+}
+.home-contact-input:-ms-input-placeholder {
+  color: #fff;
+}
+
+.home-contact-button {
+  display: inline-block;
+  height: 54px;
+  padding: 0 18px;
+  color: #303030;
+  font-weight: bold;
+  border: 0;
+  background: #26b3df;
+  vertical-align: top;
+}
+
+.wpcf7-form-control-wrap {
+  display: inline-block;
+  width: 40%;
+  margin: 0 7px;
+}
+
+.wpcf7-not-valid-tip {
+  padding: 5px 0;
+  text-align: left;
+}
+
+div.wpcf7 img.ajax-loader {
+  display: none;
+}
+
+/* =============================================================================
+Blog
+========================================================================== */
+.blog-intro {
+  background: #26b3df;
+}
+
+.blog-intro-article {
+  width: 71.42857%;
+  margin: 0 auto;
+  padding: 3.57143% 0;
+}
+.blog-intro-article a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.articles-list {
+  width: 71.42857%;
+  margin: 0 auto;
+  padding: 3.57143% 0 1.19048%;
+}
+
+.articles-list-single {
+  float: left;
+  width: 30%;
+  margin: 0 3.57143% 3.57143% 0;
+}
+.articles-list-single:nth-child(3n) {
+  margin-right: 0;
+}
+.articles-list-single:nth-child(3n+1) {
+  clear: left;
+}
+
+.articles-list-single-title {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* =============================================================================
+Article
+========================================================================== */
+.content {
+  background: #fff;
+  width: 71.42857%;
+  float: left;
+}
+.content,
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+  color: #303030;
+}
+
+.single-article {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.single-article-title {
+  width: 75%;
+}
+
+/* =============================================================================
+Sidebar
+========================================================================== */
+.sidebar {
+  padding: 3.57143% 7.14286%;
+  width: 28.57143%;
+  float: left;
+}
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* =============================================================================
+Mobile
+========================================================================== */
+
+@media all and (max-width: 900px) {
+
+	.home-intro-title {
+		font-size: 6.9vw;
+	}
+	
+	.home-intro-text {
+		font-size: 2.4vw;
+	}
+	
+	.home-middle-container:after {
+		padding-top: 0;
+	}
+	
+	.home-middle {
+		position: static;
+		font-size: 16px;
+	}
+	
+	.home-middle-content {
+		width: 85% /* ** */;
+	}
+	
+	.home-blog,
+	.home-blog-main,
+	.home-blog-articles,
+	.content,
+	.sidebar {
+		display: block;
+		width: 100%;
+	}
+	
+	.home-blog-main,
+	.home-blog-articles	{
+		padding: 7.14286% /* ** */;
+		overflow: hidden;
+	}
+	
+	.home-blog-title {
+		font-size: 7.4vw;
+	}
+	
+	.home-team {
+		width: 100%;
+	}
+	
+	.wpcf7-form-control-wrap {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	
+	.blog-intro-article-title,
+	.single-article-title {
+		font-size: 8vw;
+	}
+	
+	.articles-list-single {
+		float: none;
+		width: 100%;
+	}
+	
+	.single-article {
+		width: 85%; /* ** */
+	}
+
+}
+
+@media all and (max-width: 675px) {
+
+	body {
+		padding-top: 0;
+	}
+
+	.site-header {
+		position: static;
+		height: auto;
+		min-height: 84px;
+	}
+
+	.menu-toggle {
+		display: block;
+		width: 32px;
+		height: 32px;
+		padding: 2px 4px;
+		margin: 5px 0;
+		border: 1px solid #26b3df;
+		background: none;
+	}
+	
+	.menu-toggle-separator {
+		display: block;
+		height: 3px;
+		margin: 4px 0;
+		background: #26b3df;
+	}
+	
+	.main-menu-container {
+		display: none;
+		float: none;
+		padding-top: 1px;
+		margin: 0;
+		clear: both;
+	}
+	
+	.main-menu > li {
+		display: block;
+		margin: 15px 0 0;
+	}
+	
+	.home-intro-container {
+		height: 280px;
+	}
+	
+	.home-intro-container:after {
+		padding-top: 0;
+	}
+
+
+	.home-intro-content,
+	.single-article-title {
+		width: 100%;
+	}
+	
+	.home-blog-main {
+		font-size: 5.5vw;
+	}
+	
+	.home-intro-title {
+		width: 100%;
+		padding: 0 10px;
+		font-size: 28px;
+	}
+	
+	.home-intro-text {
+		font-size: 14px;
+	}
+	
+}
+
+/*
+**************************
+parallax: TABLET + DESKTOP
+**************************
+*/
+@media (min-width: 768px) {
+	.home-intro-container,
+	.home-intro {
+		height: 100%;
+	}
+	.home-contact-container {
+		padding: 20% 0;
+	}
+
+	.container { position: absolute; top:10%; height: 90%;}
+
+	#intro {
+		/*
+		the height of this div determines how long the scroll is.
+		Make sure to also edit the JS
+		*/
+		height:500px;
+		width:100%;
+		position: absolute;
+		top:0;
+		left:0;
+		z-index:0;
+	}
+
+	#overlaid {
+		/*
+		This is the image that fades in 
+		*/
+		background-image:  url(http://vivwebclients.com/trustlayers/wp-content/themes/trustlayers/img/bg-intro.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 50% 0 ;
+		background-attachment: fixed;
+		color: white;
+		height: 100%;
+		margin: 0 auto;
+		overflow: hidden;
+		padding: 0;
+		z-index: 3;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		opacity: 0;
+	}
+
+	#underlaid {
+		/*
+		This is the bottom image 
+		*/
+		z-index:2;
+		background-image:  url(http://vivwebclients.com/trustlayers/wp-content/themes/trustlayers/img/bg-intro_blur.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 50% 0 ;
+		background-attachment: fixed;	color: white;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+		overflow: hidden;
+		top: 0;
+		padding: 0;
+	}
+}
+
+/*
+***********
+parallax: ONLY DESKTOP
+***********
+*/
+@media (min-width: 1026px) {}
+
+/*
+***********
+parallax: ONLY TABLET
+***********
+*/
+@media (max-width: 1025px) and (min-width: 768px) {}
+/*
+***********
+parallax: MOBILE
+***********
+*/
+@media (max-width: 767px) {
+	#about, #blog, #team, #contact {
+		/* margin: -84px 0 84px 0; */
+	}
+}
+/*
+***********
+parallax: ALL SIZES
+***********
+*/
+	
